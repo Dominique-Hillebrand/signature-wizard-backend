@@ -5,12 +5,11 @@ const port = 3000;
 app.use(express.json());
 
 app.post('/api/data', (req, res) => {
-    const { pin } = req.body;
-    if (pin === "1337") {
-        res.json({ message: 'PIN is correct!' });
+    const { pin, fullName } = req.body;
+    if (fullName && pin === "1337") {
+      res.json({ message: "authenticated" });
     } else {
-        // res.status(400).json({ message: 'Incorrect PIN' });
-        res.json({ message: 'Incorrect PIN :(' });
+      res.json({ message: "Incorrect PIN" });
     }
 
 });
